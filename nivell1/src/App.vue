@@ -1,0 +1,32 @@
+<template>
+  <div id="app">
+    
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <div class="navbar-brand"><img src="./assets/Wolfenstein-5-icon.png" alt="Logo" width="40" height="auto"></div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegacio">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navegacio">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link to="/" class="nav-link">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/users" class="nav-link">Users</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/pictures" class="nav-link">Pictures</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <router-view/>
+    <footer></footer>
+  </div>
+</template>
+
+<script src="./scripts/app.js"></script>
+
+<style src="./styles/app.css"></style>
