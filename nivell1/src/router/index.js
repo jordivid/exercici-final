@@ -18,10 +18,10 @@ const routes = [
     }
   },
   {
-    path: '/pictures',
-    name: 'Pictures',
+    path: '/albums',
+    name: 'Albums',
     component: function () {
-      return import(/* webpackChunkName: "pictures" */ '../views/Pictures.vue')
+      return import(/* webpackChunkName: "albums" */ '../views/Albums.vue')
     }
   }
 ]

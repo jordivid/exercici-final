@@ -7,9 +7,73 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    users: Map,
-    albums: Map,
-    photos: Map
+    users: new Map(),
+    albums: new Map(),
+    photos: new Map()
+  },
+  getters: {
+    GetUsers(state) {
+      const usuaris = [];
+      for(let usuari of state.users.values()) {
+        usuaris.push(usuari);
+      }
+      return usuaris;
+    },
+    GetUser(state) {
+      return function(id) {
+        return state.users.get(id);
+      }
+    },
+    GetVisitedUsers(state) {
+      const usuaris = [];
+      for(let usuari of state.users.values()) {
+        console.log(usuari.name);
+        console.log(usuari.visits);
+        console.log(usuari);
+        if(usuari.visits > 0) {
+          usuaris.push(usuari);
+        }
+      }
+      return usuaris;
+    },
+    GetAlbums(state) {
+      const coleccio = [];
+      let album;
+      let photo;
+
+      for(let [key, value] of state.albums) {
+        photo = state.photos.get(value.photos[0]);
+        album = {};
+        album.id = key;
+        album.title = photo.title;
+        coleccio.push(album);
+      }
+      
+      return coleccio;
+    },
+    GetAlbum(state) {
+      return function(id) {
+        return state.albums.get(id);
+      }
+    },
+    GetVisitedAlbums(state) {
+      const coleccio = [];
+      let album;
+      let photo;
+
+      for(let [key, value] of state.albums) {
+        // console.log(value);
+        if(value.visits > 0) {
+          photo = state.photos.get(value.photos[0]);
+          album = {};
+          album.id = key;
+          album.title = photo.title;
+          coleccio.push(album);
+        }
+      }
+      
+      return coleccio;
+    }
   },
   mutations: {
     SetUsers(state, mapUsers) {
@@ -21,6 +85,14 @@ export default new Vuex.Store({
     SetPhotos(state, mapPhotos) {
       state.photos = mapPhotos;
     },
+    IncUserVisits(state, id) {
+      const user = this.getters.GetUser(id);
+      user.visits++;
+    },
+    IncAlbumVisits(state, id) {
+      const album = this.getters.GetAlbum(id);
+      album.visits++;
+    }
   },
   actions: {
     // Obtenció de la llista d'usuaris
@@ -58,7 +130,6 @@ export default new Vuex.Store({
         }
         context.commit("SetAlbums", albumMap);
         context.commit("SetPhotos", photoMap);
-        console.log(context.state.photos);
       })
       .catch(error => {
         context.commit("SetAlbums", new Map());
