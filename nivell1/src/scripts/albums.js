@@ -12,7 +12,13 @@ export default {
     methods: {
         Consulta(id) {
             this.$store.commit("IncAlbumVisits", id);
-            alert(this.GetAlbum(id).visits);
+            this.$router.push(
+                {
+                    name: "AlbumDetails",
+                    params: {
+                        idAlbum: id
+                    }
+                });
         }
     }
 }

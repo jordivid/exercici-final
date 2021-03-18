@@ -24,7 +24,7 @@
       </nav>
     </header>
     <main>
-      <router-view/>
+      <router-view class="animate__animated animate__zoomIn"/>
     </main>
     <footer class="d-flex justify-content-between align-items-center">
       <div class="ml-3">Jordi Vidaña</div>

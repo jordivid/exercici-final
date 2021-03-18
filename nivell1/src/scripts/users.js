@@ -12,7 +12,18 @@ export default {
     methods: {
         Consulta(id) {
             this.$store.commit("IncUserVisits", id);
-            alert(this.GetUser(id).visits);
+            this.$router.push(
+            {
+                name: "UserDetails",
+                params: {
+                    idUser: id
+                }
+            });
+        }
+    },
+    filters: {
+        Majuscules(valor) {
+            return valor.toUpperCase();
         }
     }
 }

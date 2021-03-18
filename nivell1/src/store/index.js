@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios'; 
-import env from './../scripts/env'; 
+import axios from 'axios';
+import env from './../scripts/env';
 
 Vue.use(Vuex)
 
@@ -27,9 +27,6 @@ export default new Vuex.Store({
     GetVisitedUsers(state) {
       const usuaris = [];
       for(let usuari of state.users.values()) {
-        console.log(usuari.name);
-        console.log(usuari.visits);
-        console.log(usuari);
         if(usuari.visits > 0) {
           usuaris.push(usuari);
         }
@@ -46,6 +43,7 @@ export default new Vuex.Store({
         album = {};
         album.id = key;
         album.title = photo.title;
+        album.visits = value.visits;
         coleccio.push(album);
       }
       
@@ -62,7 +60,6 @@ export default new Vuex.Store({
       let photo;
 
       for(let [key, value] of state.albums) {
-        // console.log(value);
         if(value.visits > 0) {
           photo = state.photos.get(value.photos[0]);
           album = {};
@@ -73,6 +70,23 @@ export default new Vuex.Store({
       }
       
       return coleccio;
+    },
+    GetPhotos(state) {
+      return function(idAlbum) {
+        const arrPhotos = [];
+        const idsPhotos = state.albums.get(idAlbum).photos;
+
+        for(let idPhoto of idsPhotos) {
+          arrPhotos.push(state.photos.get(idPhoto));
+        }
+
+        return arrPhotos;
+      }
+    },
+    GetPhoto(state) {
+      return function(id) {
+        return state.photos.get(id);
+      }
     }
   },
   mutations: {

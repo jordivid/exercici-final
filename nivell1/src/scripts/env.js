@@ -1,6 +1,7 @@
 export default { 
     data() { 
         return {} 
-    }, 
-    baseURL: 'http://jsonplaceholder.typicode.com' 
+    },
+    
+    baseURL: 'http://jsonplaceholder.typicode.com'
 } 

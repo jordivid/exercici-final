@@ -18,10 +18,24 @@ const routes = [
     }
   },
   {
+    path: '/userdetails/:idUser',
+    name: 'UserDetails',
+    component: function () {
+      return import(/* webpackChunkName: "users" */ '../views/UserDetails.vue')
+    }
+  },
+  {
     path: '/albums',
     name: 'Albums',
     component: function () {
       return import(/* webpackChunkName: "albums" */ '../views/Albums.vue')
+    }
+  },
+  {
+    path: '/albumdetails/:idAlbum',
+    name: 'AlbumDetails',
+    component: function () {
+      return import(/* webpackChunkName: "users" */ '../views/AlbumDetails.vue')
     }
   }
 ]
