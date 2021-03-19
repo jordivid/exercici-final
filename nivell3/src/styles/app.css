@@ -40,6 +40,7 @@ h1{
 footer{
   height: 40px;
   width: 100%;
+  
   background-color: #130f40;
   font-size: 0.8rem;
   color: #486079;
@@ -47,4 +48,55 @@ footer{
 
 .content {
   min-height: calc(100vh - 40px);
+}
+
+@media (max-width: 320px) {
+  #formulari{
+    width: 150px;
+  }
+}
+
+@media (max-width: 280px) {
+  #formulari{
+    width: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  #formulari{
+    position: absolute;
+    right: 30px;
+  }
+}
+
+#llista{
+  position: absolute;
+  top: 65px;
+  width: 200px;
+  height: 200px;
+  overflow: auto;
+  background-color: white;
+  z-index: 10;
+  border: 2px solid black;
+}
+
+@media (max-width: 766px) {
+  #llista{
+    right: calc(50% - 100px);
+  }
+}
+
+@media (min-width: 767px) {
+  #llista{
+    right: 0px;
+  }
+}
+
+#llista ul li{
+  cursor: pointer;
+  background-color: #dff9fb;
+}
+
+#llista ul li:hover{
+  background-color: rgb(157, 235, 235);
 }

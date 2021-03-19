@@ -48,3 +48,26 @@ footer{
 .content {
   min-height: calc(100vh - 40px);
 }
+
+@media (max-width: 320px) {
+  #formulari{
+    width: 150px;
+  }
+}
+
+@media (max-width: 280px) {
+  #formulari{
+    width: 120px;
+  }
+}
+
+@media (min-width: 768px) {
+  #formulari{
+    position: absolute;
+    right: 30px;
+  }
+}
+
+#lupa{
+  cursor: pointer;
+}

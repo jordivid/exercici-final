@@ -11,7 +11,7 @@ export default new Vuex.Store({
     albums: new Map(),
     photos: new Map(),
     canviUser: false,
-    canviAlbum: false
+    canviAlbum: false    
   },
   getters: {
     GetUsers(state) {
@@ -24,6 +24,16 @@ export default new Vuex.Store({
     GetUser(state) {
       return function(id) {
         return state.users.get(id);
+      }
+    },
+    GetUserByName(state) {
+      return function(name) {
+        for (let user of state.users.values()) {
+          if(user.name.toUpperCase() == name.toUpperCase()) {
+            return user;
+          }
+        }
+        return null;
       }
     },
     GetVisitedUsers(state) {

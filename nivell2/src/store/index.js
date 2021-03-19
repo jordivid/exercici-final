@@ -26,6 +26,16 @@ export default new Vuex.Store({
         return state.users.get(id);
       }
     },
+    GetUserByName(state) {
+      return function(name) {
+        for (let user of state.users.values()) {
+          if(user.name.toUpperCase() == name.toUpperCase()) {
+            return user;
+          }
+        }
+        return null;
+      }
+    },
     GetVisitedUsers(state) {
       const usuaris = [];
 

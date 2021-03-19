@@ -11,7 +11,6 @@
               <td class="text-right w-25">{{usuari.visits}}</td>
             </tr>
           </table>
-
         </div>
       </div>
       <div class="col-sm-8 col-md-5 col-xl-4 mt-2">
@@ -24,7 +23,6 @@
               <td class="text-right w-25">{{album.visits}}</td>
             </tr>
           </table>
-
         </div>
       </div>
     </div>
